@@ -16,6 +16,7 @@ archive.initialize({
 var request = supertest.agent(server);
 
 describe('server', function() {
+  console.log(request);
   describe('GET /', function () {
     it('should return the content of index.html', function (done) {
       // just assume that if it contains an <input> tag its index.html
