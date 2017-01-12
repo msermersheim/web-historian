@@ -3,10 +3,10 @@ var archive = require('../helpers/archive-helpers');
 // require more modules/folders here!
 var fs = require('fs');
 var helpers = require('./http-helpers');
-
+var urlArray = ['example1.com', 'example2.com'];
 
 exports.handleRequest = function (req, res) {
-
+// console.log(fs.writeFileSync(archive.paths.list, urlArray.join('\n')));
 
   //my additions:
   if (req.method === 'GET') {
