@@ -6,13 +6,11 @@ var helpers = require('./http-helpers');
 var urlArray = ['example1.com', 'example2.com'];
 
 exports.handleRequest = function (req, res) {
-// console.log(fs.writeFileSync(archive.paths.list, urlArray.join('\n')));
 
-  //my additions:
   if (req.method === 'GET') {
+    // console.log('req.url: ', req.url);
     if (req.url === '/') {
       fs.readFile(archive.paths.siteAssets + '/index.html', function(err, data) {
-        console.log(archive.paths.siteAssets.toString());
         if (err) {
           console.log(err);
         } else {
@@ -21,10 +19,23 @@ exports.handleRequest = function (req, res) {
           res.end(data.toString());
         }
       });
+    } else {
+      //archive.isUrlArchived(archive.paths.archivedSites + req.url, callback);
+      fs.readFile(archive.paths.archivedSites + req.url, function(err, files) {
+        if (err) {
+          console.log(err);
+        } else {
+          //res.writeHead(200, );
+
+        }
+      });
+      //
     }
 
-  } //else if {
-
+  }
+  if (req.method === 'POST') {
+    
+  }
 };
   
   //res.end(archive.paths.list);

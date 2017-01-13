@@ -36,8 +36,8 @@ exports.isUrlInList = function(site, callback) {
   //read list of sites
   fs.readFile(exports.paths.list, 'utf8', function(err, urls) {
     var list = urls.split('\n');
-    var isItIn = list.indexOf(site);
-    callback(err, isItIn !== -1);
+    var isItThere = list.indexOf(site);
+    callback(err, isItThere !== -1);
   });
 };
 
@@ -45,9 +45,22 @@ exports.addUrlToList = function(site, callback) {
   fs.writeFile(exports.paths.list, site, 'utf8', callback);
 };
 
-exports.isUrlArchived = function() {
-  
+exports.isUrlArchived = function(site, callback) {
+  // to web/archived/sites
+  fs.readdir(exports.paths.archivedSites, function(err, files) {
+    var isItThere = files.indexOf(site);
+    callback(err, isItThere !== -1);
+  });
 };
 
-exports.downloadUrls = function() {
+exports.downloadUrls = function(urlArray) {
+  // fs.readFile(exports.paths.list, 'utf8', function(err, urls) {});
+    //var list = urls.split('\n');
+    //check if items in list are Archived:
+    // for (var i = 0; i < list.length; i++) {
+    //   if (!exports.isURLArchived(list[i], callback)) {
+
+
+    
+  
 };
